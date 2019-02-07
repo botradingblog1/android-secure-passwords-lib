@@ -1,18 +1,17 @@
-# Android library for storing preferences securely (Java)
+# Android library for storing passwords securely (Java)
 
 ## Overview
-The purpose or this project is to show how preferences can be stored securely in your app.
-For example, sometimes it is necessary to store sensitive user information persistently in your app (e.g. a user's DOB or ddress).
+The purpose or this project is to provide an easy-to-use, secure library for storing user credentials and sensitive information.
 The default Android SharedPreferences are saved in a plain text XML file in the app's internal storage, so not a good place to store sensitive information.
 
-This project shows you how to create a wrapper around the standard SharedPreferences class that encrypts both preference keys and values with a strong encryption algorithm.
+This project creates a wrapper around the standard SharedPreferences class that encrypts both preference keys and values with a strong encryption algorithm.
 
-Both preference keys and values can be encrypted using AES-256 CBC mode. Encryption keys are generated when the SecurePreferences are intialized and stored in the Android KeyStore.
+Both preference keys and values are encrypted using AES-256 CBC mode. Encryption keys are generated when the SecurePreferences are intialized and stored in the Android KeyStore.
 
-NOTE: Use at your own risk. The library has not been tested in a production app
+Warning: Use at your own risk. The library has not been tested in a production app
 
 ## Supporting material
-For more detailed information about the implementation, please see my [blog post on storing preferences securely](http://justmobiledev.com/storing-preferences-securely-on-android/).
+For more detailed information about the implementation, please see my [blog post on storing passwords securely](http://justmobiledev.com/storing-passwords-securely-on-android/).
 
 The Android documentation on [the Android Keystore System](https://developer.android.com/training/articles/keystore) is a good read to better understand the project.
 
@@ -38,25 +37,17 @@ dependencies {
 
 ## Usage
 ```java
-        // Create secure preferences
-        SharedPreferences securePreferences = new SecurePrefsBuilder()
-                .setApplication(MyApplication.getInstance())
-                .obfuscateValue(true)
-                .obfuscateKey(true)
-                .setSharePrefFileName("your_secure_preference_file_bname")
-                .createSharedPrefs(this);
+        final String MY_PASSWORD_KEY = "my_password_key";
 
-        // Add a preference
-        SharedPreferences.Editor editor = securePreferences.edit();
+        // Create Secure Preferences Container
+        SecurePasswordContainer secureContainer = SecurePasswordContainer.create(MyApplication.getInstance());
 
-        String prefValue = "test string";
+        // Store a password
+        SecurePasswordContainer.set(MY_PASSWORD_KEY, password);
 
-        // Store the string
-        editor.putString("test_key", prefValue);
-        editor.commit();
+        // Retrieve password
+        String retrievedPassword = SecurePasswordContainer.get(MY_PASSWORD_KEY, "");
 
-        // Get the string
-        String prefValueRetrieved = securePreferences.getString("test_key", "");
 ```
 
 ## Implementation
@@ -81,5 +72,8 @@ You can right-click on the file and 'Save As' to a temp directory on your comput
 2. Press the 'Start' button to encrypt key and value and store them into the preferences xml file
 3. The app fetches the preferences again, decrypts the value and displays them in the second text field.
 
+## Contributors
+Contributors are welcome to extend features, e.g. select encryption algorithm, ability to store other data types, password hash option, etc.
+
 ## Screenshots
-![Secure Preferences](screenshots/secure_preferences_ss_1.png?raw=true "Secure Preferences")
+![Secure Passwords](screenshots/secure-passwords-ss-1.png?raw=true "Secure Passwords")
