@@ -1,4 +1,4 @@
-# Android library for storing passwords securely (Java)
+# Android library for storing credentials securely (Java)
 
 ## Overview
 The purpose or this project is to provide an easy-to-use, secure library for storing user credentials and sensitive information.
@@ -30,8 +30,8 @@ Add the SecurePreferences library to your root build.gradle at the end of reposi
 Add the dependency to your app bild.gradle:
 
 ```
-dependencies {
-	        implementation 'com.github.justmobiledev:android-secure-preferences-lib-1:1.0'
+	dependencies {
+	        implementation 'com.github.justmobiledev:android-secure-passwords-lib:1.0'
 	}
 ```
 
