@@ -69,8 +69,10 @@ dependencies {
 You can right-click on the file and 'Save As' to a temp directory on your computer. The file content should show the encrypted key and value, e.g.
 
 ```xml
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <map>
-    <string name="atgF69t3sjhUZwJosmIRZSfgXLQhg21FxbrJ534ATXo=&#10;">pXJ7qfFftbUlMozjOidT6EBXwX4l5go2XE3mo/DVrxw=&#10;    </string>
+    <string name="SdfDPM+/YYxAxqT6uglWlw==">3GieiQ1hCS1V0X5D0srbng==</string>
+    <string name="kUYzK2T9kDFhL/RYSSVY8g==">OwhEqVBCrZwnZwUDfI9ijQ==</string>
 </map>
 ```
 
